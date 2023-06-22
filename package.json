@@ -1,0 +1,20 @@
+{
+  "name": "calendar-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "npx lerna run --parallel start",
+    "build": "npx lerna run build",
+    "test": "npx lerna run test",
+    "test:watch": "npx lerna run test:watch",
+    "test:cov": "npx lerna run test:cov",
+    "lint": "npx lerna run lint"
+  },
+  "devDependencies": {
+    "lerna": "^6.5.1"
+  }
+}
