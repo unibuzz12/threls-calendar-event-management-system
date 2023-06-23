@@ -1,11 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import { DateNavigator } from "@/components";
+import { Navbar } from "@/components";
+import { getCurrentDate } from "@/utils/dateUtil";
+import { CurrentDateType } from "@/utils/typesUtil";
 
-export default function Home() {
+const Home: React.FC = () => {
+  const { date, month, year } = getCurrentDate();
+  const [selectedDate, setSelectedDate] = useState<CurrentDateType>({date, month, year});
+
   return (
     <>
-      <DateNavigator />
+      <Navbar
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
     </>
   )
 }
+
+export default Home;
