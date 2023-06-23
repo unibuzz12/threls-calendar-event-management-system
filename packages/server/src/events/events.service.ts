@@ -2,21 +2,37 @@ import {
   Injectable,
   NotFoundException,
   InternalServerErrorException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { Event } from './schemas/event.schema';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { EventValidationService } from './event-validation.service';
 
 @Injectable()
 export class EventsService {
-  constructor(@InjectModel(Event.name) private eventModel: Model<Event>) {}
+  constructor(
+    @InjectModel(Event.name) private eventModel: Model<Event>,
+    private eventValidationService: EventValidationService,
+  ) {}
 
   async create(createEventDto: CreateEventDto): Promise<Event> {
+    const newEvent = new this.eventModel(createEventDto);
+    if (this.eventValidationService.validateEventDuration(newEvent)) {
+      throw new BadRequestException('New Event Duration is incorrect.');
+    }
+
+    const existingEvents = await this.findAll();
+    if (
+      this.eventValidationService.validateEventOverlap(newEvent, existingEvents)
+    ) {
+      throw new BadRequestException('Event overlaps with existing events.');
+    }
+
     try {
-      const createdEvent = new this.eventModel(createEventDto);
-      return await createdEvent.save();
+      return await newEvent.save();
     } catch (error) {
       throw new InternalServerErrorException('Failed to create event.');
     }
@@ -39,6 +55,29 @@ export class EventsService {
   }
 
   async update(id: ObjectId, updateEventDto: UpdateEventDto) {
+    const existEvent = await this.findOne(id);
+    if (!existEvent) {
+      throw new NotFoundException(`Event with ID ${id} not found.`);
+    }
+    const updatedEvent = {
+      ...{ start_time: existEvent.start_time, end_time: existEvent.end_time },
+      ...updateEventDto,
+    };
+
+    if (this.eventValidationService.validateEventDuration(updatedEvent)) {
+      throw new BadRequestException('Updated Event Duration is incorrect.');
+    }
+
+    const existingEvents = await this.findAll();
+    if (
+      this.eventValidationService.validateEventOverlap(
+        updatedEvent,
+        existingEvents,
+      )
+    ) {
+      throw new BadRequestException('Event overlaps with existing events.');
+    }
+
     try {
       return await this.eventModel.findOneAndUpdate(
         { _id: id },
@@ -51,7 +90,7 @@ export class EventsService {
         },
       );
     } catch (error) {
-      throw new NotFoundException(`Event with ID ${id} not found.`);
+      throw new InternalServerErrorException('Failed to create event.');
     }
   }
 
