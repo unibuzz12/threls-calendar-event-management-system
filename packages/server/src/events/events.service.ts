@@ -39,37 +39,27 @@ export class EventsService {
   }
 
   async update(id: ObjectId, updateEventDto: UpdateEventDto) {
-    const event = await this.findOne(id);
-    if (event) {
-      try {
-        return await this.eventModel.updateOne(
-          { _id: id },
-          {
-            name: updateEventDto.name,
-            description: updateEventDto.description,
-            location: updateEventDto.location,
-            start_time: updateEventDto.start_time,
-            end_time: updateEventDto.end_time,
-          },
-        );
-      } catch (error) {
-        throw new InternalServerErrorException(
-          `Failed to update event with ID ${id}.`,
-        );
-      }
+    try {
+      return await this.eventModel.findOneAndUpdate(
+        { _id: id },
+        {
+          name: updateEventDto.name,
+          description: updateEventDto.description,
+          location: updateEventDto.location,
+          start_time: updateEventDto.start_time,
+          end_time: updateEventDto.end_time,
+        },
+      );
+    } catch (error) {
+      throw new NotFoundException(`Event with ID ${id} not found.`);
     }
   }
 
   async remove(id: ObjectId) {
-    const event = await this.findOne(id);
-    if (event) {
-      try {
-        return await this.eventModel.deleteOne({ _id: id });
-      } catch (error) {
-        throw new InternalServerErrorException(
-          `Failed to delete event with ID ${id}`,
-        );
-      }
+    try {
+      return await this.eventModel.findOneAndRemove({ _id: id });
+    } catch (error) {
+      throw new NotFoundException(`Event with ID ${id} not found.`);
     }
   }
 }
