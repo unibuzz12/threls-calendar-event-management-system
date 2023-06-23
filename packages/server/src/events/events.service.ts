@@ -29,6 +29,8 @@ export class EventsService {
         name: updateEventDto.name,
         description: updateEventDto.description,
         location: updateEventDto.location,
+        start_time: updateEventDto.start_time,
+        end_time: updateEventDto.end_time,
       },
     );
   }
