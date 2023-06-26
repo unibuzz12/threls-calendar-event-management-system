@@ -9,8 +9,6 @@ const Navbar: React.FC<INavbar> = (props) => {
 
   const yearsOfString = getYearsList();
 
-  console.log(selectedDate.date);
-
   const handleChangeMonth = (month: string) => {
     const date = selectedDate.date;
     date.setMonth(getMonthFromString(month));
