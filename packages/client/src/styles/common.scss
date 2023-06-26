@@ -1,0 +1,47 @@
+/** ------------------
+         COLORS
+---------------------- **/
+$bg-color-primary: rgb(241, 243, 244);
+$bg-color-secondary: rgb(237, 242, 244);
+$bg-color-purple: rgb(210, 218, 255);
+$bg-color-light-blue: rgb(171, 217, 255);
+$tx-color-primary: rgb(0, 0, 0);
+
+/** -----------------
+        TYPOGRAPHY
+---------------------- **/
+// Font size
+$font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+
+// Font size
+$font-size-extra-small: 10px;
+$font-size-small: 12px;
+$font-size-regular: 14px;
+$font-size-large: 16px;
+$font-size-extra-large: 18px;
+
+// Font weight
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+/** -----------------
+        SPACING
+---------------------- **/
+$padding-extra-small: 4px;
+$padding-small: 6px;
+$padding-medium: 8px;
+
+$space-extra-small: 12px;
+$space-small: 14px;
+$space-medium: 16px;
+$space-large: 24px;
+$space-extra-large: 32px;
+
+/** -----------------
+        BREAKPOINTS
+---------------------- **/
+$breakpoint-screen-small: 767px;
