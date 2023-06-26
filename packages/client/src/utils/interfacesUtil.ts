@@ -10,3 +10,7 @@ export interface ISelector {
   selectList: string[];
   onSelectChange: (data: string) => void;
 }
+
+export interface ICalendar {
+  date: Date,
+}
