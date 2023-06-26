@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgb(97, 96, 96);
+
+  .navbar__selector {
+    display: flex;
+    gap: 10px;
+  }
+
+  .navbar__button-prev, .navbar__button-next {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

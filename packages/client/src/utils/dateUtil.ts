@@ -21,3 +21,7 @@ export const getCurrentDate = (): CurrentDateType => {
     year,
   }
 }
+
+export const getMonthFromString = (mon: string): number => {
+  return new Date(Date.parse(mon +" 1, 2012")).getMonth();
+}
