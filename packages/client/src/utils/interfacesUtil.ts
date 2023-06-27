@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { CurrentDateType } from "@/utils/typesUtil";
 
 export interface INavbar {
