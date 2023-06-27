@@ -1,0 +1,62 @@
+.calendar-day {
+  &-card {
+    width: 13vw;
+    min-height: 5vh;
+    cursor: cell;
+    background-color: $bg-color-primary;
+
+    &:hover {
+      background: $bg-color-purple;
+    }
+
+    &--disabled {
+      background-color: $bg-color-secondary !important;
+      cursor: not-allowed;
+
+      &:hover {
+        background: $bg-color-secondary;
+      }
+    }
+  }
+
+  &-weekend {
+    background-color: lavender !important;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: $padding-small;
+  }
+
+  &-content {
+    height: 100%;
+  }
+
+  &-reminders-handle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &-add-reminder-div {
+    display: flex;
+    justify-content: right;
+  }
+
+  &-add-reminder-button {
+    min-width: 20px !important;
+    width: 20px;
+    height: 20px;
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  &-text {
+    color: $tx-color-primary;
+    text-align: "center";
+    font-size: $font-size-extra-small;
+    margin-top: $padding-medium;
+  }
+}

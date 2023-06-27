@@ -51,7 +51,6 @@ export const getCurrentMonthCalendarizableDays = (date: Date) => {
   const baseDate = dayjs(date);
   const month = parseInt(baseDate.format("M"));
   const year = parseInt(baseDate.format("YYYY"));
-  console.log(getPreviousMonthDate(baseDate))
 
   const amountOfDays = baseDate.daysInMonth() + 1;
   const weekdayOfFirstDayOfCurrentMonth = Number(

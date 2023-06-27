@@ -1,5 +1,4 @@
-import dayjs from "dayjs";
-import { CurrentDateType } from "@/utils/typesUtil";
+import { CurrentDateType, BaseInfoType } from "@/utils/typesUtil";
 
 export interface INavbar {
   selectedDate: CurrentDateType;
@@ -7,11 +6,40 @@ export interface INavbar {
 }
 
 export interface ISelector {
-  currentItem: string,
+  currentItem: string;
   selectList: string[];
   onSelectChange: (data: string) => void;
 }
 
 export interface ICalendar {
-  date: Date,
+  date: Date;
+}
+
+export interface ICalendarDay {
+  day: number;
+  month: number;
+  year: number;
+  isEnabled: boolean;
+  height: string;
+}
+
+export interface IEvent {
+  isEnabled: boolean;
+  dailyReminders: BaseInfoType[];
+  setIsEditing: (isEditing: boolean) => void;
+  setBaseInfo: (baseInfo: any) => void;
+  setEdit: (edit: any) => void
+}
+
+export interface IEventModal {
+  day: number;
+  month: number;
+  year: number;
+  open: boolean;
+  isEdit: boolean;
+  handleClose: () => void;
+  baseText: string;
+  baseCity: string;
+  baseTime: Date;
+  id: string | null;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { CalendarHeader } from "@/components";
+import { CalendarDay, CalendarHeader } from "@/components";
 import { ICalendar } from "@/utils/interfacesUtil";
 import { getCurrentMonthCalendarizableDays } from "@/utils/dateUtil";
 import { getRowHeightFromCurrentMonth } from "./helpers";
@@ -18,6 +18,16 @@ const Calendar: React.FC<ICalendar> = ({ date = new Date() }) => {
       spacing={0}
     >
       <CalendarHeader />
+      {calendarDays?.map((day) => (
+        <CalendarDay
+          key={`${day.number}.${day.month}.${day.year}`}
+          day={day.number}
+          month={day.month}
+          year={day.year}
+          isEnabled={day.isEnabled}
+          height={gridRowHeight}
+        />
+      ))}
     </Grid>
   );
 }
