@@ -2526,7 +2526,7 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.7.2.tgz"
   "version" "4.7.2"
 
-"axios@^1.0.0":
+"axios@^1.0.0", "axios@^1.4.0":
   "integrity" "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-1.4.0.tgz"
   "version" "1.4.0"
@@ -2856,7 +2856,6 @@
     "@emotion/styled" "^11.11.0"
     "@mui/icons-material" "^5.11.16"
     "@mui/material" "^5.13.6"
-    "@mui/x-date-pickers" "^6.9.0"
     "@next/font" "13.1.6"
     "@types/node" "18.13.0"
     "@types/react" "18.0.28"
@@ -3450,6 +3449,11 @@
   "integrity" "sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q=="
   "resolved" "https://registry.npmjs.org/dateformat/-/dateformat-3.0.3.tgz"
   "version" "3.0.3"
+
+"dayjs@^1.11.8":
+  "integrity" "sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.8.tgz"
+  "version" "1.11.8"
 
 "debug@^3.2.7":
   "integrity" "sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ=="

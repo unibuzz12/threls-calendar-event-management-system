@@ -1,8 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { CalendarDay, CalendarHeader } from "@/components";
-import { ICalendar } from "@/utils/interfacesUtil";
-import { getCurrentMonthCalendarizableDays } from "@/utils/dateUtil";
+import { getCurrentMonthCalendarizableDays, ICalendar } from "@/utils";
 import { getRowHeightFromCurrentMonth } from "./helpers";
 
 const Calendar: React.FC<ICalendar> = ({ date = new Date() }) => {

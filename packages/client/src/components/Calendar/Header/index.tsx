@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid } from '@mui/material';
-import { getWeekDays } from '@/utils/dateUtil';
+import { getWeekDays } from '@/utils';
 
 const CalendarHeader = () => {
   return getWeekDays().map((day) => (

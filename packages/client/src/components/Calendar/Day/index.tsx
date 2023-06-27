@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, CardContent, Grid } from "@mui/material";
 import { Event, EventModal } from "@/components";
-import { ICalendarDay } from "@/utils/interfacesUtil";
-import { BaseInfoType } from "@/utils/typesUtil";
+import { BaseInfoType, ICalendarDay } from "@/utils";
 
 const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabled = false }) => {
   // const { reminders } = useSelector((state) => state.reminders);

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Selector } from "@/components";
-import { INavbar } from "@/utils/interfacesUtil";
+import { INavbar,  getYearsList, getMonthFromString } from "@/utils";
 import { MONTHS_STRING } from "@/constants";
-import { getYearsList, getMonthFromString } from "@/utils/dateUtil";
 
 const Navbar: React.FC<INavbar> = (props) => {
   const { selectedDate, onDateChange } = props;

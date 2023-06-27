@@ -3,7 +3,7 @@ import {
   MenuItem,
   Select,
 } from '@mui/material';
-import { ISelector } from "@/utils/interfacesUtil";
+import { ISelector } from "@/utils";
 
 const Selector: React.FC<ISelector> = (props) => {
   const { currentItem, selectList, onSelectChange } = props;

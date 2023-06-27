@@ -1,5 +1,5 @@
 import React from "react";
-import { IEvent } from "@/utils/interfacesUtil";
+import { IEvent } from "@/utils";
 
 const Event: React.FC<IEvent> = ({
   isEnabled,
