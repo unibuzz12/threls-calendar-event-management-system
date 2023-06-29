@@ -4,14 +4,8 @@ export type CurrentDateType = {
   year: string,
 };
 
-export type BaseInfoType = {
-  id: string | null,
-  time: Date,
-  city: string,
-  description: string,
-}
-
 export type EventType = {
+  _id: string;
   name: string;
   description?: string;
   start_time: Date;

@@ -1,4 +1,4 @@
-import { CurrentDateType, BaseInfoType } from "@/utils/typesUtil";
+import { CurrentDateType, EventType } from "@/utils/typesUtil";
 
 export interface INavbar {
   selectedDate: CurrentDateType;
@@ -25,7 +25,7 @@ export interface ICalendarDay {
 
 export interface IEvent {
   isEnabled: boolean;
-  dailyReminders: BaseInfoType[];
+  dailyReminders: EventType[];
   setIsEditing: (isEditing: boolean) => void;
   setBaseInfo: (baseInfo: any) => void;
   setEdit: (edit: any) => void
@@ -37,9 +37,8 @@ export interface IEventModal {
   year: number;
   open: boolean;
   isEdit: boolean;
+  events: EventType[];
+  baseInfo: EventType;
   handleClose: () => void;
-  baseText: string;
-  baseCity: string;
-  baseTime: Date;
-  id: string | null;
+  setEvents: (event: EventType[]) => void
 }

@@ -3,7 +3,6 @@ import { Grid } from "@mui/material";
 import { CalendarDay, CalendarHeader } from "@/components";
 import { getCurrentMonthCalendarizableDays, ICalendar } from "@/utils";
 import { getRowHeightFromCurrentMonth } from "./helpers";
-
 const Calendar: React.FC<ICalendar> = ({ date = new Date() }) => {
   const calendarDays = getCurrentMonthCalendarizableDays(date);
   const gridRowHeight = getRowHeightFromCurrentMonth(calendarDays?.length);

@@ -1,33 +1,36 @@
 import React, { useState } from "react";
 import { Button, Card, CardContent, Grid } from "@mui/material";
 import { Event, EventModal } from "@/components";
-import { BaseInfoType, ICalendarDay } from "@/utils";
+import { ICalendarDay, EventType } from "@/utils";
+import { useFetchEvent } from "@/hooks";
 
-const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabled = false }) => {
-  // const { reminders } = useSelector((state) => state.reminders);
-  // const dailyReminders = reminders.filter(
-  //   (reminder) =>
-  //     reminder.day === day && reminder.month === month && reminder.year === year
-  // );
 
-  const dailyReminders: any[] = [];
+const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabled = false }) => {  
+  const { events, setEvents } = useFetchEvent();
+  const dailyReminders = events.filter((event) => 
+    new Date(event.start_time).getDate() === day && new Date(event.start_time).getMonth() === month - 1 && new Date(event.start_time).getFullYear() === year
+  );
 
   const weekday = new Date(year, month - 1, day).getDay();
   const [isEditing, setIsEditing] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [baseInfo, setBaseInfo] = useState<BaseInfoType>({
-    id: null,
-    time: new Date(year, month - 1, day, 0, 0, 0),
-    city: "",
+  const [baseInfo, setBaseInfo] = useState<EventType>({
+    _id: "",
+    name: "",
+    start_time: new Date(year, month - 1, day, 0, 0, 0),
+    end_time: new Date(year, month - 1, day, 0, 0, 0),
+    location: "",
     description: "",
   });
 
   const openAddModal = async () => {
     if (isEnabled) {
       setBaseInfo({
-        id: null,
-        time: new Date(year, month - 1, day, 0, 0, 0),
-        city: "",
+        _id: "",
+        name: "",
+        start_time: new Date(year, month - 1, day, 0, 0, 0),
+        end_time: new Date(year, month - 1, day, 0, 0, 0),
+        location: "",
         description: "",
       });
       setEdit(false);
@@ -105,10 +108,9 @@ const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabl
         open={isEditing}
         isEdit={edit}
         handleClose={handleClose}
-        baseText={baseInfo.description}
-        baseCity={baseInfo.city}
-        baseTime={baseInfo.time}
-        id={baseInfo.id}
+        events={events}
+        setEvents={setEvents}
+        baseInfo={baseInfo}
       />
     </>
   );

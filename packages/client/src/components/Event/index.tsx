@@ -10,13 +10,17 @@ const Event: React.FC<IEvent> = ({
 }) => {
   if (!isEnabled) return null;
   const openEditModal = (id: string | null) => {
-    const reminderIndex = dailyReminders.findIndex((item) => item.id === id);
+    console.log(id, dailyReminders);
+    const reminderIndex = dailyReminders.findIndex((item) => item._id === id);
     const reminder = dailyReminders[reminderIndex];
+    console.log(reminder);
     setBaseInfo({
-      id: reminder.id,
-      time: reminder.time,
-      city: reminder.city,
+      id: reminder._id,
+      start_time: reminder.start_time,
+      end_time: reminder.end_time,
+      name: reminder.name,
       description: reminder.description,
+      location: reminder.location,
     });
     setEdit(true);
     setIsEditing(true);
@@ -27,13 +31,13 @@ const Event: React.FC<IEvent> = ({
       {dailyReminders.map((reminder) => (
         <div
           className="calendar-reminder"
-          key={reminder.id}
-          onClick={() => openEditModal(reminder.id)}
+          key={reminder._id}
+          onClick={() => openEditModal(reminder._id)}
         >
           <span>
-            {reminder.time.getHours() + " : " + reminder.time.getMinutes()}
+            {new Date(reminder.start_time).getHours() + " : " + new Date(reminder.start_time).getMinutes()}
           </span>
-          <span>{reminder.city}</span>
+          <span>{reminder.name}</span>
         </div>
       ))}
     </div>
