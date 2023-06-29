@@ -12,7 +12,6 @@ const Event: React.FC<IEvent> = ({
   const openEditModal = (id: string | null) => {
     const reminderIndex = dailyReminders.findIndex((item) => item._id === id);
     const reminder = dailyReminders[reminderIndex];
-    console.log(reminder);
     setBaseInfo({
       _id: reminder._id,
       start_time: reminder.start_time,
@@ -26,10 +25,10 @@ const Event: React.FC<IEvent> = ({
   };
 
   return (
-    <div className="calendar-reminders">
+    <div className="calendar-events">
       {dailyReminders.map((reminder) => (
         <div
-          className="calendar-reminder"
+          className="calendar-event"
           key={reminder._id}
           onClick={() => openEditModal(reminder._id)}
         >

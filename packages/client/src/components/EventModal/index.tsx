@@ -1,6 +1,6 @@
+import axios from "axios";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Button, Modal, Typography, TextField } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { TimePicker } from "@mui/x-date-pickers";
@@ -53,19 +53,19 @@ const EventModal: React.FC<IEventModal> = (props) => {
     });
   };
 
-  const handleStartTimeChange = (e: any) => {
+  const handleStartTimeChange = (time: any) => {
     setError(null);
     setFormData({
       ...formData,
-      start_time: e.$d,
+      start_time: time.$d,
     });
   }
 
-  const handleEndTimeChange = (e: any) => {
+  const handleEndTimeChange = (time: any) => {
     setError(null);
     setFormData({
       ...formData,
-      end_time: e.$d,
+      end_time: time.$d,
     });
   }
 
