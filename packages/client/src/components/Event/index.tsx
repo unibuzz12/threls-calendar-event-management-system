@@ -10,12 +10,11 @@ const Event: React.FC<IEvent> = ({
 }) => {
   if (!isEnabled) return null;
   const openEditModal = (id: string | null) => {
-    console.log(id, dailyReminders);
     const reminderIndex = dailyReminders.findIndex((item) => item._id === id);
     const reminder = dailyReminders[reminderIndex];
     console.log(reminder);
     setBaseInfo({
-      id: reminder._id,
+      _id: reminder._id,
       start_time: reminder.start_time,
       end_time: reminder.end_time,
       name: reminder.name,

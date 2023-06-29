@@ -41,4 +41,6 @@ export interface IEventModal {
   baseInfo: EventType;
   handleClose: () => void;
   setEvents: (event: EventType[]) => void
+  error: any;
+  setError: (error: any) => void
 }

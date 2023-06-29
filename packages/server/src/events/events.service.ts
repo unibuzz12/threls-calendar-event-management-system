@@ -59,36 +59,18 @@ export class EventsService {
     if (!existEvent) {
       throw new NotFoundException(`Event with ID ${id} not found.`);
     }
-    const updatedEvent = {
-      ...{ start_time: existEvent.start_time, end_time: existEvent.end_time },
-      ...updateEventDto,
-    };
-
-    if (this.eventValidationService.validateEventDuration(updatedEvent)) {
-      throw new BadRequestException('Updated Event Duration is incorrect.');
-    }
-
-    const existingEvents = await this.findAll();
-    if (
-      this.eventValidationService.validateEventOverlap(
-        updatedEvent,
-        existingEvents,
-      )
-    ) {
-      throw new BadRequestException('Event overlaps with existing events.');
-    }
 
     try {
-      return await this.eventModel.findOneAndUpdate(
+      await this.eventModel.findOneAndUpdate(
         { _id: id },
         {
           name: updateEventDto.name,
           description: updateEventDto.description,
           location: updateEventDto.location,
-          start_time: updateEventDto.start_time,
-          end_time: updateEventDto.end_time,
         },
       );
+
+      return await this.findOne(id);
     } catch (error) {
       throw new InternalServerErrorException('Failed to create event.');
     }

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { AxiosError } from "axios";
 import { Button, Card, CardContent, Grid } from "@mui/material";
 import { Event, EventModal } from "@/components";
 import { ICalendarDay, EventType } from "@/utils";
 import { useFetchEvent } from "@/hooks";
 
-
-const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabled = false }) => {  
+const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabled = false }) => {
   const { events, setEvents } = useFetchEvent();
-  const dailyReminders = events.filter((event) => 
+
+  const dailyReminders = events.filter((event) =>
     new Date(event.start_time).getDate() === day && new Date(event.start_time).getMonth() === month - 1 && new Date(event.start_time).getFullYear() === year
   );
 
@@ -22,6 +23,7 @@ const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabl
     location: "",
     description: "",
   });
+  const [error, setError] = useState<AxiosError | null>();
 
   const openAddModal = async () => {
     if (isEnabled) {
@@ -41,6 +43,7 @@ const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabl
   const handleClose = () => {
     setEdit(false);
     setIsEditing(false);
+    setError(null);
   };
 
   const enabledClass = isEnabled
@@ -111,6 +114,8 @@ const CalendarDay: React.FC<ICalendarDay> = ({ day, month, year, height, isEnabl
         events={events}
         setEvents={setEvents}
         baseInfo={baseInfo}
+        error={error}
+        setError={setError}
       />
     </>
   );
