@@ -1,5 +1,10 @@
 @import "@/styles/common.scss";
-@import "@/components/Navbar/style.scss";
+@import "@/components/Navbar/styles.scss";
+@import "@/components/Calendar/styles.scss";
+@import "@/components/Calendar/Header/styles.scss";
+@import "@/components/Calendar/Day/styles.scss";
+@import "@/components/Event/styles.scss";
+@import "@/components/EventModal/styles.scss";
 
 html,
 body {

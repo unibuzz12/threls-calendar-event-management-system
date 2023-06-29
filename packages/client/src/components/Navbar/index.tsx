@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Selector } from "@/components";
-import { INavbar } from "@/utils/interfacesUtil";
-import { monthsOfString, getYearsList, getMonthFromString } from "@/utils/dateUtil";
+import { INavbar,  getYearsList, getMonthFromString } from "@/utils";
+import { MONTHS_STRING } from "@/constants";
 
 const Navbar: React.FC<INavbar> = (props) => {
   const { selectedDate, onDateChange } = props;
@@ -24,7 +24,7 @@ const Navbar: React.FC<INavbar> = (props) => {
   const handleChangePrevMonth = () => {
     const date = selectedDate.date;
     date.setMonth(getMonthFromString(selectedDate.month) - 1);
-    const month = monthsOfString[date.getMonth()];
+    const month = MONTHS_STRING[date.getMonth()];
     const year = date.getFullYear() as unknown as string;
     onDateChange({...selectedDate, month, year});
   }
@@ -32,7 +32,7 @@ const Navbar: React.FC<INavbar> = (props) => {
   const handleChangeNextMonth = () => {
     const date = selectedDate.date;
     date.setMonth(getMonthFromString(selectedDate.month) + 1);
-    const month = monthsOfString[date.getMonth()];
+    const month = MONTHS_STRING[date.getMonth()];
     const year = date.getFullYear() as unknown as string;
     onDateChange({...selectedDate, month, year});
   }
@@ -45,7 +45,7 @@ const Navbar: React.FC<INavbar> = (props) => {
       <div className="navbar__selector">
         <Selector
           currentItem={selectedDate.month}
-          selectList={monthsOfString}
+          selectList={MONTHS_STRING}
           onSelectChange={handleChangeMonth}
         />
 

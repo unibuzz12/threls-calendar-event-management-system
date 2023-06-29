@@ -1,0 +1,16 @@
+.calendar-reminders {
+  height: calc(16vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+}
+
+.calendar-reminder {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background: green;
+  color: white;
+  padding: 5px 10px;
+}
