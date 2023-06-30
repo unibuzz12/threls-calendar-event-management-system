@@ -29,3 +29,19 @@ The build is minified and the filenames include the hashes.\
 ### `yarn lint`
 
 Launches Eslint and show programmatic problems in console and vscode
+
+## Additinoal Comments for Project
+### `Front-end missing points`
+- TDD using Jest
+- SSR based on Next API
+- Calendar Event Notification
+- Implemenation of Daily or Weekly basis calendar(Now only for Monthly basis)
+- Snackbar Alert for CURD actions
+- Pixel Perfect and Responsive design(Currently it's only for Desktop resolution)
+
+### `Back-end missing points`
+- TDD using Jest(Unit and E2E testing)
+- Implementation of User Module(Current design not includes the user and attenders who is scheduled the event and will attend)
+
+### `Deployment`
+- Will be best to deploy in Kubernate because it's modulized by lerna
