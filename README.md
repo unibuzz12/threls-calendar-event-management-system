@@ -6,6 +6,9 @@ This project is a monorepo and uses lerna as it management tool, visit [lerna](h
 
 In the project directory, you can run the following commands from the root directory:
 
+### `yarn install`
+Install the necessary packages of Frontend and Backend at once time.
+
 ### `yarn start`
 
 Runs the client and server in the development mode.\
